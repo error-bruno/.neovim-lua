@@ -26,7 +26,9 @@ end
 -- 
 --component_separators = { left = '', right = ''},
 
-require('lualine').setup {
+return {
+  'nvim-lualine/lualine.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
   options = {
     icons_enabled = true,
     theme = 'auto',
