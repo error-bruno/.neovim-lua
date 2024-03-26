@@ -45,7 +45,10 @@ require('lualine').setup {
     lualine_a = { {'mode', separator = { left = '', right = '' }, right_padding = 2}},
     --lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_b = {{'b:gitsigns_head', icon = '', separator = { right = '' }},},
-    lualine_c = {{custom_fname, path = 1, separator = { right = '' }}, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }},
+    lualine_c = {
+      {custom_fname, path = 1, separator = { right = '' }},
+      { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+    },
     lualine_x = {'encoding', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {{ 'location', separator = { right = '' }, left_padding = 2 }}
@@ -93,6 +96,10 @@ require('lualine').setup {
           directory =  '',     -- Text to show when the buffer is a directory
         },
       }
+    },
+    lualine_y = {''},
+    lualine_z = {
+      {'datetime', separator = { right = '' }, style = '%H:%M %d-%m-%Y', left_padding = 2},
     },
   },
   winbar = {},
