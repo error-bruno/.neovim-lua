@@ -22,16 +22,12 @@ function custom_fname:update_status()
   return data
 end
 
--- 
--- 
---component_separators = { left = '', right = ''},
-
 require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'auto',
     component_separators = '',
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '░▒▓' },
     disabled_filetypes = {
       statusline = {},
       winbar = {},
@@ -46,10 +42,10 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = { {'mode', separator = { left = '' }, right_padding = 2}},
+    lualine_a = { {'mode', separator = { left = '', right = '' }, right_padding = 2}},
     --lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_b = {{'b:gitsigns_head', icon = ''},},
-    lualine_c = {{custom_fname, path = 1, separator = { right = '' }}, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }},
+    lualine_b = {{'b:gitsigns_head', icon = '', separator = { right = '' }},},
+    lualine_c = {{custom_fname, path = 1, separator = { right = '' }}, { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }},
     lualine_x = {'encoding', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {{ 'location', separator = { right = '' }, left_padding = 2 }}
@@ -86,7 +82,6 @@ require('lualine').setup {
           packer = 'Packer',
           fzf = 'FZF',
           alpha = 'Alpha',
-          lazynvim = 'Lazynvim',
         }, -- Shows specific buffer name for that filetype ( { `filetype` = `buffer_name`, ... } )
 
         -- Automatically updates active buffer color to match color of other components (will be overidden if buffers_color is set)
