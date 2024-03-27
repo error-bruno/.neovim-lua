@@ -22,22 +22,3 @@ vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
-
-vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
-    require("CopilotChat").ask(args.args, { selection = require("CopilotChat.select").visual })
-end, { nargs = "*", range = true })
-
-vim.keymap.set("n", "<leader>av", ":CopilotChat<cr>")
-vim.keymap.set("n", "<leader>cc", function ()
-  local input = vim.fn.input("Quick Chat: ")
-
-  if input ~= "" then
-    require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
-  end
-end)
---vim.keymap.set("x", "<leader>av", ":CopilotChatVisual<cr>")
-vim.keymap.set("n", "<leader>ae", "<cmd>CopilotChatExplain<cr>")
-vim.keymap.set("n", "<leader>at", "<cmd>CopilotChatTests<cr>")
--- The following commands don't seem to work
-vim.keymap.set("n", "<leader>ar", "<cmd>CopilotChatReview<cr>")
-vim.keymap.set("n", "<leader>aR", "<cmd>CopilotChatRefactor<cr>")
