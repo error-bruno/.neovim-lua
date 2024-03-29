@@ -5,7 +5,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	--
-
 	--- LSP and code support
 	{
 		"VonHeikemen/lsp-zero.nvim",
@@ -22,17 +21,16 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"saadparwaiz1/cmp_luasnip",
+			-- AI
+			"zbirenbaum/copilot-cmp",
 			-- Snippets
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 		},
 	},
-	--{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-	"nvim-treesitter/playground",
 	"mhartington/formatter.nvim",
 	--
 	--- Productivity enhancements
-	{ "nvim-telescope/telescope.nvim", tag = "0.1.6", dependencies = { { "nvim-lua/plenary.nvim" } } },
 	"preservim/nerdcommenter",
 	{
 		"kylechui/nvim-surround",
