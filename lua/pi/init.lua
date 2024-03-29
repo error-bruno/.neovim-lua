@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("pi.utils")
-require("pi.set")
+require("pi.options")
 require("lazy").setup("pi.plugins")
 require("pi.remap")
 require("pi.todo")

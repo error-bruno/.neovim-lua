@@ -16,12 +16,12 @@ local config = function()
 	})
 end
 
-local m = require("pi/utils").lazy_map
+local m = require("pi/utils")
 local keys = {
-	m("<leader>pf", [[TelescopeFindFiles]]),
-	m("<C-p>", [[TelescopeGitFiles]]),
-	m("<leader>fb", [[TelescopeBuffers]]),
-	m("<leader>ps", [[TelescopeGrepString]]),
+	m.lazy_map("<leader>pf", [[TelescopeFindFiles]]),
+	m.lazy_map("<C-p>", [[TelescopeGitFiles]]),
+	m.lazy_map("<leader>fb", [[TelescopeBuffers]]),
+	m.lazy_map("<leader>ps", [[TelescopeGrepString]]),
 }
 
 return {
@@ -29,12 +29,11 @@ return {
 	config = config,
 	init = function()
 		local builtin = require("telescope.builtin")
-		local create_cmd = require("pi/utils").create_cmd
-		create_cmd("TelescopeFindFiles", builtin.find_files)
-		create_cmd("TelescopeOldFiles", builtin.oldfiles)
-		create_cmd("TelescopeGitFiles", builtin.git_files)
-		create_cmd("TelescopeBuffers", builtin.buffers)
-		create_cmd("TelescopeGrepString", function()
+		m.create_cmd("TelescopeFindFiles", builtin.find_files)
+		m.create_cmd("TelescopeOldFiles", builtin.oldfiles)
+		m.create_cmd("TelescopeGitFiles", builtin.git_files)
+		m.create_cmd("TelescopeBuffers", builtin.buffers)
+		m.create_cmd("TelescopeGrepString", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
 	end,

@@ -1,4 +1,7 @@
 local lsp_zero = require("lsp-zero")
+local m = require("pi/utils")
+local create_cmd = m.create_cmd
+local lazy_map = m.lazy_map
 
 -- When lsp_zero attaches, set keymaps
 lsp_zero.on_attach(function(_, bufnr)

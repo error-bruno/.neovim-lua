@@ -1,25 +1,27 @@
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+local u = require("pi/utils")
+local m, k = u.cmd_map, u.key_map
 
-vim.keymap.set("n", "<leader>w", vim.cmd.w)
-vim.keymap.set("n", "<leader>q", ":q<CR>")
-vim.keymap.set("n", "<leader><space>", vim.cmd.nohlsearch)
+m("<leader>w", "w")
+m("<leader>q", "q")
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+k("<leader>pv", vim.cmd.Ex) -- Open file browser
+k("<leader><space>", vim.cmd.nohlsearch) -- Clear search highlight
+k("J", ":m '>+1<CR>gv=gv", "v") -- Move line down
+k("K", ":m '<-2<CR>gv=gv", "v") -- Move line up
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+k("J", "mzJ`z") -- Join line, keep cursor position
+k("<C-d>", "<C-d>zz") -- Scroll down, keep cursor position
+k("<C-u>", "<C-u>zz") -- Scroll up, keep cursor position
+k("n", "nzzzv") -- Move to next search result, keep cursor position
+k("N", "Nzzzv") -- Move to previous search result, keep cursor position
 
-vim.keymap.set("x", "p", '"_dP')
-vim.keymap.set("n", "<leader>y", '"+y')
-vim.keymap.set("v", "<leader>y", '"+y')
-vim.keymap.set("n", "<leader>Y", '"+Y')
+k("p", '"_dP', "x") -- Paste without yanking
+k("<leader>y", '"+y') -- Copy to system clipboard
+k("<leader>y", '"+y', "v") -- Copy to system clipboard in visual mode
+k("<leader>Y", '"+Y') -- Copy to system clipboard
 
 -- Set keymaps for quick fix
-vim.keymap.set("n", "<C-j>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-k>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lprev<CR>zz")
+k("<C-j>", "<cmd>cnext<CR>zz")
+k("<C-k>", "<cmd>cprev<CR>zz")
+k("<leader>j", "<cmd>lnext<CR>zz")
+k("<leader>k", "<cmd>lprev<CR>zz")
