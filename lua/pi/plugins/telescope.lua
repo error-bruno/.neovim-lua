@@ -31,6 +31,7 @@ return {
 		local builtin = require("telescope.builtin")
 		local create_cmd = require("pi/utils").create_cmd
 		create_cmd("TelescopeFindFiles", builtin.find_files)
+		create_cmd("TelescopeOldFiles", builtin.oldfiles)
 		create_cmd("TelescopeGitFiles", builtin.git_files)
 		create_cmd("TelescopeBuffers", builtin.buffers)
 		create_cmd("TelescopeGrepString", function()

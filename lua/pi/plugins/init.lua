@@ -28,7 +28,6 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 	},
-	"mhartington/formatter.nvim",
 	--
 	--- Productivity enhancements
 	"preservim/nerdcommenter",
