@@ -13,7 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("pi.utils")
 require("pi.options")
-require("lazy").setup("pi.plugins")
 require("pi.remap")
+require("lazy").setup("pi.plugins")
+
+-- Custom plugins
 require("pi.todo")
 require("pi.jira")

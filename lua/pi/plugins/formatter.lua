@@ -1,5 +1,4 @@
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
---require("formatter").setup({
 local config = function()
 	local util = require("formatter.util")
 	require("formatter").setup({
