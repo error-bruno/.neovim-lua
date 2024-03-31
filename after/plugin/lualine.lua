@@ -1,7 +1,9 @@
 local git_blame = require("gitblame")
 local custom_fname = require("lualine.components.filename"):extend()
 local highlight = require("lualine.highlight")
-local default_status_colors = { saved = "#228B22", modified = "#C70039" }
+
+local named_colors = require("nord.named_colors")
+local default_status_colors = { saved = named_colors.dark_gray, modified = named_colors.orange }
 
 function custom_fname:init(options)
 	custom_fname.super.init(self, options)
@@ -30,18 +32,20 @@ function custom_fname:update_status()
 	return data
 end
 
+local circle_seperator = { left = "", right = "" }
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
 		component_separators = "",
-		section_separators = { left = "", right = "░▒▓" },
+		section_separators = {},
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
 		},
 		ignore_focus = {},
 		always_divide_middle = true,
+
 		globalstatus = false,
 		refresh = {
 			statusline = 1000,
@@ -50,16 +54,18 @@ require("lualine").setup({
 		},
 	},
 	sections = {
-		lualine_a = { { "mode", separator = { left = "", right = "" }, right_padding = 2 } },
-		--lualine_b = {'branch', 'diff', 'diagnostics'},
+		-- Bottom left side
+		lualine_a = { { "mode", separator = circle_seperator, right_padding = 2 } },
 		lualine_b = { { "b:gitsigns_head", icon = "", separator = { right = "" } } },
 		lualine_c = {
-			{ custom_fname, path = 1, separator = { right = "" } },
+			{ custom_fname, path = 1, separator = { right = "▓▒░" } },
 			{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
 		},
-		lualine_x = { "encoding", "filetype" },
-		lualine_y = { "progress" },
-		lualine_z = { { "location", separator = { right = "" }, left_padding = 2 } },
+
+		-- Bottom right side
+		lualine_x = { "selectioncount" }, -- TODO: Find a more useful metric to display here
+		lualine_y = { { "progress", separator = { left = "" } }, "searchcount" },
+		lualine_z = { { "location", separator = circle_seperator } },
 	},
 	inactive_sections = {
 		lualine_a = {},
@@ -77,8 +83,8 @@ require("lualine").setup({
 				hide_filename_extension = false, -- Hide filename extension when set to true.
 				show_modified_status = true, -- Shows indicator when the buffer is modified.
 
-				section_separators = { left = "", right = "" },
-				component_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 
 				mode = 4, -- 0: Shows buffer name
 				-- 1: Shows buffer index
@@ -86,7 +92,7 @@ require("lualine").setup({
 				-- 3: Shows buffer number
 				-- 4: Shows buffer name + buffer number
 
-				max_length = vim.o.columns * 2 / 2, -- Maximum width of buffers component,
+				max_length = vim.o.columns * 3 / 4, -- Truncate component if its length is larger than the maximum length
 				filetype_names = {
 					TelescopePrompt = "Telescope",
 					dashboard = "Dashboard",
@@ -105,9 +111,14 @@ require("lualine").setup({
 				},
 			},
 		},
-		lualine_y = { "" },
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {
+			{ "diff", separator = { left = "" } },
+		},
 		lualine_z = {
-			{ "datetime", separator = { right = "" }, style = "%H:%M %d-%m-%Y", left_padding = 2 },
+			{ "''", separator = circle_seperator },
 		},
 	},
 	winbar = {},
