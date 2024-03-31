@@ -100,7 +100,7 @@ return {
 	},
 	opts = {
 		question_header = "## User  ",
-		answer_header = "## Copilot  ",
+		answer_header = "## Cortana  ",
 		error_header = "## Error  ",
 		separator = " ", -- Separator to use in chat
 		prompts = prompts,
