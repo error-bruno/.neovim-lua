@@ -1,10 +1,4 @@
 return {
-	--- Visuals
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-	--
 	--- LSP and code support
 	{
 		"VonHeikemen/lsp-zero.nvim",
