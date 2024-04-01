@@ -9,18 +9,17 @@ return {
 		local highlight = require("lualine.highlight")
 
 		local named_colors = require("nord.named_colors")
-		local default_status_colors = { saved = named_colors.dark_gray, modified = named_colors.orange }
 
 		function custom_fname:init(options)
 			custom_fname.super.init(self, options)
 			self.status_colors = {
 				saved = highlight.create_component_highlight_group(
-					{ bg = default_status_colors.saved },
+					{ bg = named_colors.dark_gray },
 					"filename_status_saved",
 					self.options
 				),
 				modified = highlight.create_component_highlight_group(
-					{ bg = default_status_colors.modified },
+					{ bg = named_colors.orange },
 					"filename_status_modified",
 					self.options
 				),
@@ -28,6 +27,14 @@ return {
 			if self.options.color == nil then
 				self.options.color = ""
 			end
+		end
+
+		function custom_fname:update_status()
+			local data = custom_fname.super.update_status(self)
+			data = highlight.component_format_highlight(
+				vim.bo.modified and self.status_colors.modified or self.status_colors.saved
+			) .. data
+			return data
 		end
 
 		local circle_seperator = { left = "", right = "" }
@@ -124,4 +131,5 @@ return {
 			extensions = {},
 		})
 	end,
+	init = function() end,
 }
