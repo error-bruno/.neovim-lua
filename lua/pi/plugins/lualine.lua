@@ -2,6 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		"shaunsingh/nord.nvim",
 	},
 	config = function()
 		local git_blame = require("gitblame")
@@ -97,7 +98,7 @@ return {
 						-- 3: Shows buffer number
 						-- 4: Shows buffer name + buffer number
 
-						max_length = vim.o.columns * 3 / 4, -- Truncate component if its length is larger than the maximum length
+						max_length = vim.o.columns * 3 / 3, -- Truncate component if its length is larger than the maximum length
 						filetype_names = {
 							TelescopePrompt = "Telescope",
 							dashboard = "Dashboard",
