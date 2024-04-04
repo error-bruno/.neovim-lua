@@ -20,6 +20,5 @@ return {
 			})
 		end,
 	},
-	{ "mistricky/codesnap.nvim", build = "make" },
 	"shaunsingh/nord.nvim",
 }
