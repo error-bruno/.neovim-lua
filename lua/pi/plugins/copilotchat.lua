@@ -10,6 +10,7 @@ local prompts = {
 	Documentation = "Please provide documentation for the following code.",
 	SwaggerApiDocs = "Please provide documentation for the following API using Swagger.",
 	SwaggerJsDocs = "Please write JSDoc for the following API using Swagger.",
+	Reusable = "Please look through the code and identify any reusable components.",
 	-- Text related prompts
 	Summarize = "Please summarize the following text.",
 	Spelling = "Please correct any grammar and spelling errors in the following text.",
