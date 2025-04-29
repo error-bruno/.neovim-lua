@@ -152,7 +152,7 @@ return {
 		require("copilot_cmp").setup()
 
 		local chat = require("CopilotChat")
-		opts.model = 'claude-3.5-sonnet'
+		opts.model = "gemini-2.5-pro"
 		local select = require("CopilotChat.select")
 		-- Use unnamed register for the selection
 		opts.selection = select.unnamed
